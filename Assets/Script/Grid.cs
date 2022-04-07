@@ -20,6 +20,10 @@ namespace MyAPP
 
         private Dictionary<Vector2Int, HashSet<T>> _grid = new();
 
+        public Dictionary<Vector2Int, HashSet<T>> GetGrid => _grid;
+
+        public Vector2Int[] OffSets => neighbourOffsets;
+
         // Funzione che svuota tutti gl ielementi della griglia senza distruggerli
         public void ClearNoAlloc()
         {
@@ -30,7 +34,7 @@ namespace MyAPP
         }
 
         // Aggiunge elementi che si trovano in una data posizione
-        private void GetAtPosition(Vector2Int position, HashSet<T> results)
+        public void GetAtPosition(Vector2Int position, HashSet<T> results)
         {
             if (!_grid.TryGetValue(position, out var hashSet)) return;
             foreach (var val in hashSet)
